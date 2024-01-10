@@ -1,5 +1,6 @@
 package com.ssdam.reply.entity;
 
+import com.ssdam.audit.Auditable;
 import com.ssdam.comment.entity.Comment;
 import com.ssdam.member.entity.Member;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Reply {
+public class Reply extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long replyId;
@@ -24,6 +25,9 @@ public class Reply {
     @OneToOne
     @JoinColumn(name = "COMMENT_ID")
     private Comment comment;
+
+    @Column(nullable = false)
+    private String Reply;
 
     public void addMember(Member member) {
         this.member = member;

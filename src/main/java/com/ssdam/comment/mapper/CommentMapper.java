@@ -20,8 +20,8 @@ public interface CommentMapper {
 
         member.setMemberId(requestBody.getMemberId());
         party.setPartyId(requestBody.getPartyId());
-        comment.setMember(member);
-        comment.setParty(party);
+        comment.addMember(member);
+        comment.addParty(party);
         comment.setComment(requestBody.getComment());
         return comment;
     }

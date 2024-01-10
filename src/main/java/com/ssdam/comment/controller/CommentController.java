@@ -95,6 +95,17 @@ public class CommentController {
                 new MultiResponseDto<>(mapper.commentsToCommentResponses(comments), pageComments),
                 HttpStatus.OK);
     }
+    @RequestMapping(value = "/v1/comments/likes", method = RequestMethod.GET, params = {"partyId"})
+    public ResponseEntity getCommentsByPartyByLikeCount(@Positive @RequestParam long partyId,
+                                             @Positive @RequestParam int page,
+                                             @Positive @RequestParam int size) {
+        Page<Comment> pageComments = commentService.findCommentsByPartySortByLikes(partyId, page - 1, size);
+        List<Comment> comments = pageComments.getContent();
+
+        return new ResponseEntity(
+                new MultiResponseDto<>(mapper.commentsToCommentResponses(comments), pageComments),
+                HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/v1/comments/{comment-id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteComment(@PathVariable("comment-id") @Positive long commentId) {

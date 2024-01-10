@@ -42,6 +42,7 @@ public class CommentDto {
         private long commentId;
         private long partyId;
         private String nickname;
+        private int likeCount;
         private String comment;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;

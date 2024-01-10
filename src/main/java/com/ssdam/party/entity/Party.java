@@ -60,7 +60,7 @@ public class Party extends Auditable {
     @OneToMany(mappedBy = "party")
     private List<PartyMember> partyMembers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "party")
+    @OneToMany(mappedBy = "party",cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Comment> comments = new ArrayList<>();
 
     @OneToMany(mappedBy = "party")

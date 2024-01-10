@@ -2,11 +2,10 @@ package com.ssdam.like.controller;
 
 import com.ssdam.like.service.LikeService;
 import com.ssdam.member.entity.Member;
+import com.ssdam.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Positive;
 
@@ -18,11 +17,17 @@ public class LikeController {
     public LikeController(LikeService likeService) {
         this.likeService = likeService;
     }
-    public ResponseEntity addLike(@PathVariable("commentId")@Positive long commentId,
-                                  @PathVariable("memberId")@Positive long memberId){
-        Member member = new Member();//member Repository or memberService에서 member가져오는 로직 필요
+    @PostMapping("/comments/{comment-id}")//현재 로그인한 회원이 좋아요/취소 할 수 있는기능 (토글)
+    public ResponseEntity toggleLikeToAnswer(@PathVariable("comment-id")@Positive long commentId,
+                                  @RequestParam @Positive long memberId){//이부분 나중에 토큰으로 받아야함
 
-        likeService.addLike(commentId,member);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        likeService.toggleLike(commentId,memberId);
+        return ResponseEntity.ok().build();
+    }
+    @GetMapping("/comments/{comment-id}/like-status")//현재 로그인한 회원이 좋아요를 눌렀는지 확인
+    public ResponseEntity<Boolean> checkLikeStatus(@PathVariable ("comment-id")@Positive long commentId,
+                                                   @RequestParam @Positive long memberId) {
+        boolean isLiked = likeService.isCommentLikedByUser(commentId,memberId);
+        return ResponseEntity.ok(isLiked);
     }
 }
