@@ -57,6 +57,9 @@ public class Party extends Auditable {
     @Column(nullable = false)
     private int hits = 0; //조회수
 
+    @Column(nullable = false)
+    private int bookmarkCount;
+
     @OneToMany(mappedBy = "party")
     private List<PartyMember> partyMembers = new ArrayList<>();
 

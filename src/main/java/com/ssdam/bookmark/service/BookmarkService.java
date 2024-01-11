@@ -26,9 +26,11 @@ public class BookmarkService {
         Member member = memberService.findMember(memberId);
         Party party = partyService.findParty(partyId);
         if(!isPartyBookmarkedByUser(memberId, partyId)){
+            party.setBookmarkCount(party.getBookmarkCount()+1);
             bookmarkRepository.save(new Bookmark(member,party));
         }
         else {
+            party.setBookmarkCount(party.getBookmarkCount()-1);
             bookmarkRepository.deleteByMemberAndParty(member,party);
         }
     }
