@@ -84,6 +84,7 @@ public class PartyDto {
         private LocalDateTime meetingDate;
         private String longitude; //경도
         private String latitude; //위도
+        private String weather;
         private String address; //주소
         private String content;
         private int maxCapacity;
