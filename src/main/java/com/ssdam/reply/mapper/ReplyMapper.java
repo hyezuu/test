@@ -7,9 +7,13 @@ import com.ssdam.reply.entity.Reply;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ReplyMapper {
+    static ReplyMapper create() {
+        return Mappers.getMapper(ReplyMapper.class);
+    }
     default Reply replyPostDtoToReply(ReplyDto.Post requestBody){
         Member member = new Member();
         Comment comment = new Comment();
@@ -27,4 +31,5 @@ public interface ReplyMapper {
 
     @Mapping(target = "nickname", source = "reply.member.nickname")
     ReplyDto.Response replyToReplyResponse(Reply reply);
+
 }

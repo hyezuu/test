@@ -25,6 +25,11 @@ public class Bookmark {
     @JoinColumn(name = "PARTY_ID")
     private Party party;
 
+    public Bookmark(Member member, Party party) {
+        this.member = member;
+        this.party = party;
+    }
+
     public void addMember(Member member) {
         this.member = member;
         if (!this.member.getBookmarks().contains(this)) {

@@ -1,11 +1,13 @@
 package com.ssdam.comment.dto;
 
+import com.ssdam.reply.dto.ReplyDto;
 import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class CommentDto {
     @Getter
@@ -40,10 +42,11 @@ public class CommentDto {
     @Getter
     public static class Response {
         private long commentId;
-        private long partyId;
+        private String partyTitle;
         private String nickname;
         private int likeCount;
         private String comment;
+        private ReplyDto.Response reply;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
     }
