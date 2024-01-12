@@ -85,6 +85,7 @@ public class PartyDto {
         private String longitude; //경도
         private String latitude; //위도
         private String weather;
+        private int bookmarkCount;
         private String address; //주소
         private String content;
         private int maxCapacity;

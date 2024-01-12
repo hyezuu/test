@@ -33,7 +33,8 @@ public class PartyService {
     }
 
     public Party createParty(Party party) {
-        party.setWeather(weatherService.getWeather(party.getLatitude(), party.getLongitude(),party.getMeetingDate()));
+        party.setWeather(weatherService.getWeather(party.getLatitude(), party.getLongitude(),party.getMeetingDate())
+                .orElse(null));
         return partyRepository.save(party);
     }
 
