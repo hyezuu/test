@@ -43,8 +43,8 @@ public interface CommentMapper {
                 .likeCount(comment.getLikeCount())
                 .comment(comment.getComment())
                 .reply(reply)
-                .createdAt(LocalDateTime.now())
-                .modifiedAt(LocalDateTime.now())
+                .createdAt(comment.getCreatedAt())
+                .modifiedAt(comment.getModifiedAt())
                 .build();
     }
 
