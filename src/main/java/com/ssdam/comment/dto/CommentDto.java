@@ -1,8 +1,10 @@
 package com.ssdam.comment.dto;
 
 import com.ssdam.reply.dto.ReplyDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -11,6 +13,7 @@ import java.util.List;
 
 public class CommentDto {
     @Getter
+    @AllArgsConstructor
     public static class Post {
 
         private long partyId;
@@ -18,24 +21,18 @@ public class CommentDto {
         private long memberId;
         @NotBlank(message = "내용은 필수 입력 사항입니다.")
         private String comment;
-
-        public Post(long memberId, String comment) {
-            this.memberId = memberId;
-            this.comment = comment;
-        }
     }
 
     @Getter
     @Builder
+    @AllArgsConstructor
+    @Setter
     public static class Patch {
 
         private long commentId;
         @NotBlank(message = "내용은 필수 입력 사항입니다.")
         private String comment;
 
-        public void setCommentId(long commentId) {
-            this.commentId = commentId;
-        }
     }
 
     @Builder

@@ -1,0 +1,317 @@
+= 플로깅 모집 사이트 쓰담
+:sectnums:
+:toc: left
+:toclevels: 4
+:toc-title: Table of Contents
+:source-highlighter: prettify
+
+v1.0.0
+
+***
+API 문서 개요
+
+//
+ 이 문서를 통해 플로깅 모집 사이트 쓰담의 API 사용법을 알 수 있습니다.
+
+***
+
+== MemberController
+
+***
+
+=== 회원 등록
+
+=== 회원 정보 조회
+
+=== 다수의 회원 정보 조회
+
+=== 회원 정보 삭제
+
+***
+
+== PartyController
+=== 모임 등록
+
+=== 모임 정보 조회
+
+=== 다수의 모임 정보 조회
+
+=== 특정 멤버가 등록한 모든 모임 조회
+
+=== 모임 정보 삭제
+
+***
+
+== CommentController
+=== 댓글 등록
+.curl-request
+include::{snippets}/post-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/post-comment/http-request.adoc[]
+
+.request-fields
+include::{snippets}/post-comment/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-comment/http-response.adoc[]
+
+.response-headers
+include::{snippets}/post-comment/response-headers.adoc[]
+
+=== 댓글 수정
+.curl-request
+include::{snippets}/patch-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/patch-comment/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-comment/path-parameters.adoc[]
+
+.request-fields
+include::{snippets}/patch-comment/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-comment/http-response.adoc[]
+
+.response-fields
+include::{snippets}/patch-comment/response-fields.adoc[]
+
+=== 특정 댓글 조회
+.curl-request
+include::{snippets}/get-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-comment/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-comment/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-comment/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-comment/response-fields.adoc[]
+
+=== 모든 댓글 조회
+.curl-request
+include::{snippets}/get-comments/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-comments/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-comments/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-comments/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-comments/response-fields.adoc[]
+
+=== 모든 댓글 조회 (마이페이지)
+.curl-request
+include::{snippets}/get-comments-by-member/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-comments-by-member/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-comments-by-member/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-comments-by-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-comments-by-member/response-fields.adoc[]
+
+=== 모든 댓글 조회 (모집글)
+.curl-request
+include::{snippets}/get-comments-by-party/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-comments-by-party/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-comments-by-party/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-comments-by-party/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-comments-by-party/response-fields.adoc[]
+
+=== 모든 댓글 조회 (모집글, 좋아요순)
+.curl-request
+include::{snippets}/get-comments-by-party-by-likeCount/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-comments-by-party-by-likeCount/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-comments-by-party-by-likeCount/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-comments-by-party-by-likeCount/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-comments-by-party-by-likeCount/response-fields.adoc[]
+
+
+=== 특정 댓글 삭제
+
+.curl-request
+include::{snippets}/delete-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/delete-comment/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-comment/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-comment/http-response.adoc[]
+
+== ReplyController
+=== 대댓글 등록
+
+.curl-request
+include::{snippets}/post-reply/curl-request.adoc[]
+
+.http-request
+include::{snippets}/post-reply/http-request.adoc[]
+
+.request-fields
+include::{snippets}/post-reply/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-reply/http-response.adoc[]
+
+.response-headers
+include::{snippets}/post-reply/response-headers.adoc[]
+
+=== 대댓글 수정
+
+.curl-request
+include::{snippets}/patch-reply/curl-request.adoc[]
+
+.http-request
+include::{snippets}/patch-reply/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-reply/path-parameters.adoc[]
+
+.request-fields
+include::{snippets}/patch-reply/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-reply/http-response.adoc[]
+
+.response-fields
+include::{snippets}/patch-reply/response-fields.adoc[]
+
+=== 대댓글 조회
+.curl-request
+include::{snippets}/get-reply/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-reply/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-reply/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-reply/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-reply/response-fields.adoc[]
+
+=== 대댓글 삭제
+
+.curl-request
+include::{snippets}/delete-reply/curl-request.adoc[]
+
+.http-request
+include::{snippets}/delete-reply/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-reply/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-reply/http-response.adoc[]
+
+== LikeController
+=== 댓글에 좋아요 등록/취소
+
+.curl-request
+include::{snippets}/toggle-like-to-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/toggle-like-to-comment/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/toggle-like-to-comment/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/toggle-like-to-comment/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/toggle-like-to-comment/http-response.adoc[]
+
+=== 특정 댓글에 대한 좋아요 여부 확인
+
+.curl-request
+include::{snippets}/check-like-status/curl-request.adoc[]
+
+.http-request
+include::{snippets}/check-like-status/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/check-like-status/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/check-like-status/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/check-like-status/http-response.adoc[]
+
+.response-fields
+include::{snippets}/check-like-status/response-fields.adoc[]
+
+== BookmarkController
+=== 모집글 북마크 등록/취소
+.curl-request
+include::{snippets}/toggle-bookmark-to-party/curl-request.adoc[]
+
+.http-request
+include::{snippets}/toggle-bookmark-to-party/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/toggle-bookmark-to-party/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/toggle-bookmark-to-party/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/toggle-bookmark-to-party/http-response.adoc[]
+
+=== 특정 모집글에 대한 북마크 여부 확인
+
+.curl-request
+include::{snippets}/check-bookmark-status/curl-request.adoc[]
+
+.http-request
+include::{snippets}/check-bookmark-status/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/check-bookmark-status/path-parameters.adoc[]
+
+.request-parameters
+include::{snippets}/check-bookmark-status/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/check-bookmark-status/http-response.adoc[]
+
+.response-fields
+include::{snippets}/check-bookmark-status/response-fields.adoc[]

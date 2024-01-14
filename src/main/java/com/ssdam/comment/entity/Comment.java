@@ -35,7 +35,7 @@ public class Comment extends Auditable {
     @JoinColumn(name = "PARTY_ID")
     private Party party;
 
-    @OneToOne(mappedBy = "comment")
+    @OneToOne(mappedBy = "comment",cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private Reply reply;
 
     @OneToMany(mappedBy = "comment")

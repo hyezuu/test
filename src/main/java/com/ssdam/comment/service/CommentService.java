@@ -39,6 +39,7 @@ public class CommentService {
     public Comment updateComment(Comment comment) {
         Comment foundComment
                 = findVerifiedComment(comment.getCommentId());
+        comment.setLikeCount(foundComment.getLikeCount());
         beanUtils.copyNonNullProperties(comment, foundComment);
         return commentRepository.save(foundComment);
     }
@@ -56,29 +57,23 @@ public class CommentService {
     //멤버가 작성한 모든 댓글 조회(최신순)
     @Transactional(readOnly = true)
     public Page<Comment> findCommentsByMember (long memberId, int page, int size) {
-        List<Comment> comments = commentRepository.findByMember_MemberId(memberId);
-        Page<Comment> pageComments =
-                new PageImpl<>(comments,
-                        PageRequest.of(page, size, Sort.by("createdAt").descending()),comments.size());
+        Page<Comment> pageComments = commentRepository.findByMember_MemberId(memberId
+                ,PageRequest.of(page, size, Sort.by("createdAt").descending()));
         return pageComments;
     }
 
     //파티에 있는 모든 댓글 조회(최신순)
     @Transactional(readOnly = true)
     public Page<Comment> findCommentsByParty (long partyId, int page, int size) {
-        List<Comment> comments = commentRepository.findByParty_PartyId(partyId);
-        Page<Comment> pageComments =
-                new PageImpl<>(comments,
-                        PageRequest.of(page, size, Sort.by("createdAt").descending()),comments.size());
+        Page<Comment> pageComments = commentRepository.findByParty_PartyId(partyId,
+                PageRequest.of(page, size, Sort.by("createdAt").descending()));
         return pageComments;
     }
     //파티에 있는 모든 댓글 조회(좋아요순)
     @Transactional(readOnly = true)
     public Page<Comment> findCommentsByPartySortByLikes (long partyId, int page, int size) {
-        List<Comment> comments = commentRepository.findByParty_PartyId(partyId);
-        Page<Comment> pageComments =
-                new PageImpl<>(comments,
-                        PageRequest.of(page, size, Sort.by("likeCount").descending()),comments.size());
+        Page<Comment> pageComments = commentRepository.findByParty_PartyId(partyId,
+                PageRequest.of(page, size, Sort.by("likeCount").descending()));
         return pageComments;
     }
 

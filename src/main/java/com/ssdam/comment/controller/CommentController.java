@@ -60,6 +60,7 @@ public class CommentController {
                 new SingleResponseDto<>(mapper.commentToCommentResponse(comment)),
                 HttpStatus.OK);
     }
+
     //모든 댓글 조회
     @RequestMapping(value = "/v1/comments", method = RequestMethod.GET)
     public ResponseEntity getComments(@Positive @RequestParam int page,
@@ -71,6 +72,7 @@ public class CommentController {
                 new MultiResponseDto<>(mapper.commentsToCommentResponses(comments), pageComments),
                 HttpStatus.OK);
     }
+
     //특정멤버가 작성한 모든 댓글 조회
     @RequestMapping(value = "/v1/comments", method = RequestMethod.GET, params = {"memberId"})
     public ResponseEntity getCommentsByMember(@Positive @RequestParam long memberId,
@@ -83,6 +85,7 @@ public class CommentController {
                 new MultiResponseDto<>(mapper.commentsToCommentResponses(comments), pageComments),
                 HttpStatus.OK);
     }
+
     //특정파티에 존재하는 모든 댓글 조회
     @RequestMapping(value = "/v1/comments", method = RequestMethod.GET, params = {"partyId"})
     public ResponseEntity getCommentsByParty(@Positive @RequestParam long partyId,
@@ -95,10 +98,11 @@ public class CommentController {
                 new MultiResponseDto<>(mapper.commentsToCommentResponses(comments), pageComments),
                 HttpStatus.OK);
     }
+
     @RequestMapping(value = "/v1/comments/likes", method = RequestMethod.GET, params = {"partyId"})
     public ResponseEntity getCommentsByPartyByLikeCount(@Positive @RequestParam long partyId,
-                                             @Positive @RequestParam int page,
-                                             @Positive @RequestParam int size) {
+                                                        @Positive @RequestParam int page,
+                                                        @Positive @RequestParam int size) {
         Page<Comment> pageComments = commentService.findCommentsByPartySortByLikes(partyId, page - 1, size);
         List<Comment> comments = pageComments.getContent();
 

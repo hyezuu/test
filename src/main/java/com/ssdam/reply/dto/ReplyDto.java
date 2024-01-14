@@ -1,6 +1,7 @@
 package com.ssdam.reply.dto;
 
 import com.ssdam.validator.NotSpace;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 
 public class ReplyDto {
     @Getter
+    @AllArgsConstructor
     public static class Post{
         private long commentId;
         private long memberId;
@@ -18,6 +20,7 @@ public class ReplyDto {
     }
     @Getter
     @Setter
+    @AllArgsConstructor
     public static class Patch{
         private long replyId;
         @NotSpace(message = "내용은 필수 입력 사항입니다.")
@@ -26,6 +29,7 @@ public class ReplyDto {
 
     @Getter
     @Builder
+    @AllArgsConstructor
     public static class Response{
         private long replyId;
         private String reply;
